@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class MainTestPage extends StatefulWidget {
+  const MainTestPage({Key? key}) : super(key: key);
+
   @override
   _MainTestPageState createState() => _MainTestPageState();
 }

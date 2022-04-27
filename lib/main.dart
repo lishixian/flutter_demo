@@ -9,6 +9,8 @@ import 'package:flutter_demo/widgets/SampleApp2.dart';
 import 'package:flutter_demo/widgets/SampleApp3.dart';
 import 'package:flutter_demo/widgets/TouchMoveView.dart';
 import 'package:flutter_demo/widgets/TouchMoveView2.dart';
+import 'package:flutter_demo/widgets/ZoomImage.dart';
+import 'package:flutter_demo/widgets/paint_demo.dart';
 import 'routes/HomeTabRoute.dart';
 import 'widgets/LoginWidget.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -30,7 +32,9 @@ import 'routes/ParticlePageRoute.dart';
 import 'routes/DragImgRoute.dart';
 
 Map<String, WidgetBuilder> routers = {
-  "裁剪图片效果,可拖拉位置和缩放": (context) => MainTestPage(),
+  "地图裁剪-可拖拉和缩放": (context) => const PaintDemo(),
+  "图片效果--可拖拉和缩放": (context) => const ZoomImage(key: Key("adfadsfa"),),
+  "裁剪图片效果,可拖拉位置和缩放": (context) => const MainTestPage(),
   "可拖动控件": (context) => const TouchMoveView2(),
   "生命周期": (context) => const LifecycleWatcher(),
   "将任务转移到后台线程": (context) => const SampleApp3(),
