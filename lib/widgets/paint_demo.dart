@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -24,6 +24,7 @@ class _PaintDemoState extends State<PaintDemo> {
   Offset scaleLastOffset = const Offset(0, 0);
   Offset offset = const Offset(0, 0);
   double rectWidth = 30, rectHeight = 20;
+  double angle = 0;
 
   @override
   void initState() {
@@ -50,7 +51,7 @@ class _PaintDemoState extends State<PaintDemo> {
   _moveStart(Offset localPosition) {
     previousScale = scale;
     Offset rectStartOffset = rectRealStartOffset;
-    //print("-_moveStart--scale:$scale---localPosition:$localPosition--rectStartOffset:$rectStartOffset");
+    //print("-_moveStart--scale:$scale---localPosition:$localPosition--mapStartOffset:$mapStartOffset");
 
     var dragX =
         localPosition.dx - (rectStartOffset.dx + rectWidth * scale + 30);
@@ -96,6 +97,8 @@ class _PaintDemoState extends State<PaintDemo> {
         scaleLastOffset = offsetLastOffset;
         rectRealStartOffset =
             (rectStartOffset - scaleLastOffset) * scale + scaleLastOffset;
+        mapRealStartOffset =
+            (mapStartOffset - scaleLastOffset) * scale + scaleLastOffset;
       }
     });
   }
@@ -130,24 +133,27 @@ class _PaintDemoState extends State<PaintDemo> {
           offset = const Offset(0, 0);
           rectWidth = 30;
           rectHeight = 20;
+          angle = 0;
         });
       },
       tooltip: 'Reset',
       color: Colors.indigo,
-      icon: const Icon(Icons.replay),
+      icon: const Icon(Icons.repeat),
     );
   }
 
   IconButton get _editButton {
     return IconButton(
       onPressed: () {
-        // setState(() {
-        //   //_animateResetInitialize();
-        // });
+         setState(() {
+           angle+=math.pi / 2;
+           angle %= math.pi *2;
+           scaleLastOffset = mapStartOffset+const Offset(74*3/2,57*3/2);
+         });
       },
       tooltip: 'edit',
       color: Colors.blue,
-      icon: const Icon(Icons.edit),
+      icon: const Icon(Icons.replay),
     );
   }
 
@@ -167,6 +173,7 @@ class _PaintDemoState extends State<PaintDemo> {
           child: Transform(
             transform: Matrix4.identity()
               //..translate(offset.dx, offset.dy)
+            ..rotateZ(angle)
               ..scale(scale),
             origin: scaleLastOffset,
             child: CustomPaint(
@@ -233,7 +240,6 @@ class _MyPainter extends CustomPainter {
     canvas.drawPoints(PointMode.points, blackPoints, paint);
 
     // 画裁剪框
-    paint.color = Colors.blue;
     List<Offset> points2;
     if (behavior != 0) {
       points2 = [
@@ -259,8 +265,12 @@ class _MyPainter extends CustomPainter {
     }
 
     paint.strokeWidth = 0.5;
-    canvas.drawPoints(PointMode.polygon, points2, paint); //draw the clip box
+    paint.color = const Color(0x66EF9A9A);
+    canvas.drawRect(Rect.fromPoints(rectStartOffset, rectStartOffset + Offset(rectWidth, rectHeight)),paint);
+
     paint.color = Colors.red;
+    canvas.drawPoints(PointMode.polygon, points2, paint); //draw the clip box
+    paint.color = Colors.blue;
     double radius = 10 / scale;
     if (behavior != 0) {
       canvas.drawCircle(points2[2], radius, paint);
@@ -270,10 +280,6 @@ class _MyPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _MyPainter oldDelegate) {
-    return oldDelegate.behavior != behavior ||
-        oldDelegate.mapStartOffset != mapStartOffset ||
-        oldDelegate.rectStartOffset != rectStartOffset ||
-        oldDelegate.rectWidth != rectWidth ||
-        oldDelegate.rectHeight != rectHeight;
+    return false;
   }
 }
