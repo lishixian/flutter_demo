@@ -4,6 +4,7 @@ import 'package:flutter_demo/widgets/DemoApp.dart';
 import 'package:flutter_demo/widgets/FadeAppTest.dart';
 import 'package:flutter_demo/widgets/LifecycleWatcher.dart';
 import 'package:flutter_demo/widgets/MainTestPage.dart';
+import 'package:flutter_demo/widgets/PlatformChannel.dart';
 import 'package:flutter_demo/widgets/SampleApp.dart';
 import 'package:flutter_demo/widgets/SampleApp2.dart';
 import 'package:flutter_demo/widgets/SampleApp3.dart';
@@ -32,6 +33,7 @@ import 'routes/ParticlePageRoute.dart';
 import 'routes/DragImgRoute.dart';
 
 Map<String, WidgetBuilder> routers = {
+  "与Android原生交互": (context) => const PlatformChannel(),
   "地图裁剪-可拖拉和缩放": (context) => const PaintDemo(),
   "图片效果--可拖拉和缩放": (context) => const ZoomImage(key: Key("adfadsfa"),),
   "裁剪图片效果,可拖拉位置和缩放": (context) => const MainTestPage(),

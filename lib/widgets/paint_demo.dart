@@ -270,16 +270,20 @@ class _MyPainter extends CustomPainter {
 
     paint.color = Colors.red;
     canvas.drawPoints(PointMode.polygon, points2, paint); //draw the clip box
-    paint.color = Colors.blue;
-    double radius = 10 / scale;
     if (behavior != 0) {
-      canvas.drawCircle(points2[2], radius, paint);
-      canvas.drawCircle(points2[5], radius, paint);
+      paint.color = Colors.blue;
+      canvas.drawCircle(points2[2], 10 / scale, paint);
+      canvas.drawCircle(points2[5], 10 / scale, paint);
     }
   }
 
   @override
   bool shouldRepaint(covariant _MyPainter oldDelegate) {
-    return false;
+    return oldDelegate.scale != scale ||
+        oldDelegate.behavior != behavior ||
+        oldDelegate.mapStartOffset != mapStartOffset ||
+        oldDelegate.rectStartOffset != rectStartOffset ||
+        oldDelegate.rectWidth != rectWidth ||
+        oldDelegate.rectHeight != rectHeight;
   }
 }
