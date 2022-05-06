@@ -1,6 +1,5 @@
 import 'dart:math' as math;
-import 'dart:ui';
-
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 class PaintDemo extends StatefulWidget {
@@ -88,8 +87,8 @@ class _PaintDemoState extends State<PaintDemo> {
           rectStartOffset += offset / scale;
           rectRealStartOffset += offset;
         } else if (behavior == 2) {
-          rectWidth += offset.dx / scale;
-          rectHeight += offset.dy / scale;
+          rectWidth = math.max(rectWidth + offset.dx / scale, 10);
+          rectHeight = math.max(rectHeight + offset.dy / scale, 10);
         }
         offsetLastOffset = details.localFocalPoint;
       } else {
@@ -145,11 +144,12 @@ class _PaintDemoState extends State<PaintDemo> {
   IconButton get _editButton {
     return IconButton(
       onPressed: () {
-         setState(() {
-           angle+=math.pi / 2;
-           angle %= math.pi *2;
-           scaleLastOffset = mapStartOffset+const Offset(74*3/2,57*3/2);
-         });
+        setState(() {
+          angle += math.pi / 2;
+          angle %= math.pi * 2;
+          scaleLastOffset =
+              mapStartOffset + const Offset(74 * 3 / 2, 57 * 3 / 2);
+        });
       },
       tooltip: 'edit',
       color: Colors.blue,
@@ -173,7 +173,7 @@ class _PaintDemoState extends State<PaintDemo> {
           child: Transform(
             transform: Matrix4.identity()
               //..translate(offset.dx, offset.dy)
-            ..rotateZ(angle)
+              ..rotateZ(angle)
               ..scale(scale),
             origin: scaleLastOffset,
             child: CustomPaint(
@@ -233,11 +233,11 @@ class _MyPainter extends CustomPainter {
       }
     }
     paint.color = Colors.grey;
-    canvas.drawPoints(PointMode.points, greyPoints, paint);
+    canvas.drawPoints(ui.PointMode.points, greyPoints, paint);
     paint.color = Colors.white;
-    canvas.drawPoints(PointMode.points, whitePoints, paint);
+    canvas.drawPoints(ui.PointMode.points, whitePoints, paint);
     paint.color = Colors.black;
-    canvas.drawPoints(PointMode.points, blackPoints, paint);
+    canvas.drawPoints(ui.PointMode.points, blackPoints, paint);
 
     // 画裁剪框
     List<Offset> points2;
@@ -266,14 +266,37 @@ class _MyPainter extends CustomPainter {
 
     paint.strokeWidth = 0.5;
     paint.color = const Color(0x66EF9A9A);
-    canvas.drawRect(Rect.fromPoints(rectStartOffset, rectStartOffset + Offset(rectWidth, rectHeight)),paint);
+    canvas.drawRect(
+        Rect.fromPoints(
+            rectStartOffset, rectStartOffset + Offset(rectWidth, rectHeight)),
+        paint);
 
     paint.color = Colors.red;
-    canvas.drawPoints(PointMode.polygon, points2, paint); //draw the clip box
+    canvas.drawPoints(ui.PointMode.polygon, points2, paint); //draw the clip box
     if (behavior != 0) {
       paint.color = Colors.blue;
       canvas.drawCircle(points2[2], 10 / scale, paint);
       canvas.drawCircle(points2[5], 10 / scale, paint);
+
+      ui.ParagraphBuilder pb = ui.ParagraphBuilder(ui.ParagraphStyle(
+        textAlign: TextAlign.center,
+        fontWeight: FontWeight.normal,
+        maxLines: 1,
+        //ellipsis: ' ',
+        fontStyle: FontStyle.normal,
+        fontSize: 8,
+      ))
+        ..pushStyle(ui.TextStyle(color: Colors.black));
+
+      if (rectWidth <= 60) {
+        pb.addText("${(rectWidth * rectHeight / 100).toStringAsFixed(1)}m²");
+      } else {
+        pb.addText(
+            "${(rectWidth / 10).toStringAsFixed(1)}m x ${(rectHeight / 10).toStringAsFixed(1)}m");
+      }
+      ui.Paragraph paragraph = pb.build()
+        ..layout(ui.ParagraphConstraints(width: rectWidth));
+      canvas.drawParagraph(paragraph, rectStartOffset + Offset(0, rectHeight));
     }
   }
 
