@@ -37,10 +37,11 @@ dependencies:
   cached_network_image: ^3.2.0
   fluttertoast: ^8.0.9
   flutter_easyloading: ^3.0.3
-  simple_animations: 4.0.1
+  simple_animations: ^4.0.2
   supercharged: ^2.1.1
   matrix_gesture_detector : 0.2.0-nullsafety.1
   animations: ^2.0.2
+  transparent_image: ^2.0.0
 
 
 
@@ -78,6 +79,8 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/NVpose1.obj
+    - assets/bb.obj
     - imgs/default.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -8,6 +8,7 @@ import 'package:flutter_demo/widgets/PlatformChannel.dart';
 import 'package:flutter_demo/widgets/SampleApp.dart';
 import 'package:flutter_demo/widgets/SampleApp2.dart';
 import 'package:flutter_demo/widgets/SampleApp3.dart';
+import 'package:flutter_demo/widgets/SimpleWidgets.dart';
 import 'package:flutter_demo/widgets/TouchMoveView.dart';
 import 'package:flutter_demo/widgets/TouchMoveView2.dart';
 import 'package:flutter_demo/widgets/ZoomImage.dart';
@@ -33,6 +34,7 @@ import 'routes/ParticlePageRoute.dart';
 import 'routes/DragImgRoute.dart';
 
 Map<String, WidgetBuilder> routers = {
+  //"3d": (context) => const SimpleWidgets(),
   "与Android原生交互": (context) => const PlatformChannel(),
   "地图裁剪-可拖拉和缩放": (context) => const PaintDemo(),
   "图片效果--可拖拉和缩放": (context) => const ZoomImage(key: Key("adfadsfa"),),
