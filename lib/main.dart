@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/routes/CupertinoTabRoute.dart';
+import 'package:flutter_demo/widgets/ButtonPage.dart';
 import 'package:flutter_demo/widgets/DemoApp.dart';
 import 'package:flutter_demo/widgets/FadeAppTest.dart';
 import 'package:flutter_demo/widgets/LifecycleWatcher.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_demo/widgets/SimpleWidgets.dart';
 import 'package:flutter_demo/widgets/TouchMoveView.dart';
 import 'package:flutter_demo/widgets/TouchMoveView2.dart';
 import 'package:flutter_demo/widgets/ZoomImage.dart';
+import 'package:flutter_demo/widgets/cupertino_picker_demo.dart';
 import 'package:flutter_demo/widgets/paint_demo.dart';
 import 'routes/HomeTabRoute.dart';
 import 'widgets/LoginWidget.dart';
@@ -34,6 +36,8 @@ import 'routes/ParticlePageRoute.dart';
 import 'routes/DragImgRoute.dart';
 
 Map<String, WidgetBuilder> routers = {
+  "选择器": (context) => const CupertinoPickerDemo(),
+  "各种按钮": (context) => const ButtonPage(),
   //"3d": (context) => const SimpleWidgets(),
   "与Android原生交互": (context) => const PlatformChannel(),
   "地图裁剪-可拖拉和缩放": (context) => const PaintDemo(),
@@ -94,6 +98,7 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: const [
               // 本地化的代理类
               GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GmLocalizationsDelegate()
             ],
