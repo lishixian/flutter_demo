@@ -82,6 +82,7 @@ flutter:
     - assets/NVpose1.obj
     - assets/bb.obj
     - imgs/default.jpg
+    - imgs/001.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/routes/CupertinoTabRoute.dart';
 import 'package:flutter_demo/widgets/ButtonPage.dart';
 import 'package:flutter_demo/widgets/DemoApp.dart';
+import 'package:flutter_demo/widgets/DialogDemo.dart';
 import 'package:flutter_demo/widgets/FadeAppTest.dart';
 import 'package:flutter_demo/widgets/InheritedWidgetDemo.dart';
 import 'package:flutter_demo/widgets/LifecycleWatcher.dart';
@@ -37,6 +38,7 @@ import 'routes/ParticlePageRoute.dart';
 import 'routes/DragImgRoute.dart';
 
 Map<String, WidgetBuilder> routers = {
+  "DialogDemo": (context) => const DialogDemo(),
   //"InheritedWidget": (context) => const InheritedWidgetDemo(),
   "选择器": (context) => const CupertinoPickerDemo(),
   "各种按钮": (context) => const ButtonPage(),
