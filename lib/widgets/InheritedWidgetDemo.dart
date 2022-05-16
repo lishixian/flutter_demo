@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../data/UserInfo.dart';
@@ -90,7 +89,7 @@ class _FState extends State<F> {
     //return Text('name:${MyInheritedWidget.of(context)?.userInfo.name}');
     return ValueListenableBuilder(
       builder: (context, UserInfo value, child) {
-        return Text('${value.name}');
+        return Text(value.name);
       },
       valueListenable: MyInheritedWidget.of(context).valueNotifier,
         //valueListenable:Provider.of<UserInfoModel>(context).userInfo,

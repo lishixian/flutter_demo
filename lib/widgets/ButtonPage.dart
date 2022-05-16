@@ -7,10 +7,10 @@ class ButtonPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('按钮页面'),
+            title: const Text('按钮页面'),
             actions:<Widget>[
               IconButton(
-                icon:Icon(Icons.search),
+                icon:const Icon(Icons.search),
                 onPressed: (){
                   print("图标按钮");
                 },
@@ -20,7 +20,7 @@ class ButtonPage extends StatelessWidget {
 
         // 浮动按钮
         floatingActionButton: FloatingActionButton(
-          child:Icon(Icons.add,color:Colors.blue,size:40,),
+          child:const Icon(Icons.add,color:Colors.blue,size:40,),
           // 点击事件
           onPressed: (){
             print('浮动按钮');
@@ -32,19 +32,19 @@ class ButtonPage extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
 
         body:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                RaisedButton(
-                  child:Text('普通按钮'),
-                  // 背景颜色
-                  color:Colors.blue,
-                  // 文字颜色
-                  textColor: Colors.white,
-                  // 按钮阴影
-                  elevation: 10,
+                ElevatedButton(
+                  child:const Text('普通按钮'),
+                  // // 背景颜色
+                  // color:Colors.blue,
+                  // // 文字颜色
+                  // textColor: Colors.white,
+                  // // 按钮阴影
+                  // elevation: 10,
                   onPressed: (){
                     print('普通按钮');
                   },
@@ -54,9 +54,9 @@ class ButtonPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RaisedButton.icon(
-                  icon: Icon(Icons.search),
-                  label: Text('图标按钮'),
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.search),
+                  label: const Text('图标按钮'),
                   onPressed: (){
                     print('图标按钮');
                   },
@@ -67,17 +67,17 @@ class ButtonPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 // 通过加外层容器设定尺寸来控制按钮的大小
-                Container(
+                SizedBox(
                   width: 140,
-                  height:50,
-                  child: RaisedButton(
+                  height:30,
+                  child: ElevatedButton(
                     child:Text('设置宽高'),
                     // 背景颜色
-                    color:Colors.blue,
-                    // 文字颜色
-                    textColor: Colors.white,
-                    // 按钮阴影
-                    elevation: 10,
+                    // color:Colors.blue,
+                    // // 文字颜色
+                    // textColor: Colors.white,
+                    // // 按钮阴影
+                    // elevation: 10,
                     onPressed: (){
                       print('设置宽高');
                     },
@@ -92,16 +92,16 @@ class ButtonPage extends StatelessWidget {
                 Expanded(
                   // 通过加外层容器设定尺寸来控制按钮的大小
                     child:Container(
-                      height:80,
-                      margin: EdgeInsets.all(10),
-                      child: RaisedButton(
-                        child:Text('自适应按钮'),
+                      height:20,
+                      margin: const EdgeInsets.all(10),
+                      child: ElevatedButton(
+                        child:const Text('自适应按钮'),
                         // 背景颜色
-                        color:Colors.blue,
-                        // 文字颜色
-                        textColor: Colors.white,
-                        // 按钮阴影
-                        elevation: 10,
+                        // color:Colors.blue,
+                        // // 文字颜色
+                        // textColor: Colors.white,
+                        // // 按钮阴影
+                        // elevation: 10,
                         onPressed: (){
                           print('自适应按钮');
                         },
@@ -137,7 +137,7 @@ class ButtonPage extends StatelessWidget {
                 Container(
                   height: 80,
                   child: RaisedButton(
-                    child:Text('圆形按钮'),
+                    child:const Text('圆形按钮'),
                     // 背景颜色
                     color:Colors.blue,
                     // 文字颜色
@@ -145,7 +145,7 @@ class ButtonPage extends StatelessWidget {
                     // 按钮阴影
                     elevation: 10,
                     // 圆角
-                    shape: CircleBorder(
+                    shape: const CircleBorder(
                       side: BorderSide(color: Colors.black),
                     ),
                     // 水波纹
@@ -160,10 +160,10 @@ class ButtonPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FlatButton(
-                  child: Text('扁平按钮'),
-                  color:Colors.blue,
-                  textColor: Colors.yellow,
+                TextButton(
+                  child: const Text('扁平按钮'),
+                  // color:Colors.blue,
+                  // textColor: Colors.yellow,
                   onPressed:(){
                     print('扁平按钮');
                   },
@@ -173,9 +173,8 @@ class ButtonPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                OutlineButton(
-                  child: Text('边框按钮'),
-                  textColor: Colors.yellow,
+                OutlinedButton(
+                  child: const Text('边框按钮'),
                   onPressed:(){
                     print('边框按钮');
                   },
@@ -187,29 +186,21 @@ class ButtonPage extends StatelessWidget {
               children: <Widget>[
                 ButtonBar(
                     children:<Widget>[
-                      RaisedButton(
-                          child:Text('按钮组'),
-                          color:Colors.blue,
-                          textColor: Colors.white,
-                          elevation: 20,
+                      ElevatedButton(
+                          child:const Text('按钮组'),
                           onPressed: (){
                             print('按钮组');
                           }
                       ),
-                      RaisedButton(
-                          child:Text('按钮组'),
-                          color:Colors.blue,
-                          textColor: Colors.white,
-                          elevation: 20,
+                      ElevatedButton(
+                          child:const Text('按钮组'),
+
                           onPressed: (){
                             print('按钮组');
                           }
                       ),
-                      RaisedButton(
-                          child:Text('按钮组'),
-                          color:Colors.blue,
-                          textColor: Colors.white,
-                          elevation: 20,
+                      ElevatedButton(
+                          child:const Text('按钮组'),
                           onPressed: (){
                             print('按钮组');
                           }
@@ -238,12 +229,12 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return Container(
-        width:this.width,
-        height:this.height,
-        child: RaisedButton(
-            child: Text(this.text),
-            onPressed:this.pressed
+    return SizedBox(
+        width:width,
+        height:height,
+        child: ElevatedButton(
+            child: Text(text),
+            onPressed:pressed
         )
     );
   }

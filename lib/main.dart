@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/routes/CupertinoTabRoute.dart';
 import 'package:flutter_demo/widgets/ButtonPage.dart';
-import 'package:flutter_demo/widgets/DemoApp.dart';
-import 'package:flutter_demo/widgets/DialogDemo.dart';
+import 'package:flutter_demo/widgets/CylinderChart.dart';
+import 'package:flutter_demo/widgets/CanvasDemo.dart';
+import 'package:flutter_demo/widgets/DemoFlowMenu.dart';
+import 'package:flutter_demo/widgets/DemoFlowPopMenu.dart';
+import 'package:flutter_demo/widgets/SliverAppBarDemo.dart';
+import 'package:flutter_demo/widgets/WidgetDemo.dart';
+import 'package:flutter_demo/widgets/DrawingBoard.dart';
 import 'package:flutter_demo/widgets/FadeAppTest.dart';
+import 'package:flutter_demo/widgets/FlowDemo.dart';
+import 'package:flutter_demo/widgets/IndexedStackDemo.dart';
 import 'package:flutter_demo/widgets/InheritedWidgetDemo.dart';
 import 'package:flutter_demo/widgets/LifecycleWatcher.dart';
 import 'package:flutter_demo/widgets/MainTestPage.dart';
@@ -11,11 +18,14 @@ import 'package:flutter_demo/widgets/PlatformChannel.dart';
 import 'package:flutter_demo/widgets/SampleApp.dart';
 import 'package:flutter_demo/widgets/SampleApp2.dart';
 import 'package:flutter_demo/widgets/SampleApp3.dart';
+import 'package:flutter_demo/widgets/SettingDemo.dart';
 import 'package:flutter_demo/widgets/SimpleWidgets.dart';
 import 'package:flutter_demo/widgets/TouchMoveView.dart';
 import 'package:flutter_demo/widgets/TouchMoveView2.dart';
+import 'package:flutter_demo/widgets/WrapDemo.dart';
 import 'package:flutter_demo/widgets/ZoomImage.dart';
 import 'package:flutter_demo/widgets/cupertino_picker_demo.dart';
+import 'package:flutter_demo/widgets/pageViewDemo.dart';
 import 'package:flutter_demo/widgets/paint_demo.dart';
 import 'routes/HomeTabRoute.dart';
 import 'widgets/LoginWidget.dart';
@@ -38,10 +48,19 @@ import 'routes/ParticlePageRoute.dart';
 import 'routes/DragImgRoute.dart';
 
 Map<String, WidgetBuilder> routers = {
-  "DialogDemo": (context) => const DialogDemo(),
+  "SliverAppBarDemo": (context) =>  const SliverAppBarDemo(),
+  "PageView": (context) =>  const PageViewDemo(),
+  "柱状图": (context) =>  const CylinderChart(),
+  "扇形菜单": (context) =>  const DemoFlowMenu(),
+  "水平展开菜单": (context) => const DemoFlowPopMenu(),
+  "个人设置项": (context) => const SettingDemo(),
+  "FlowDemo": (context) => const FlowDemo(),
+  "WrapDemo": (context) => const WrapDemo(),
+  "IndexedStackDemo": (context) => const IndexedStackDemo(),
+  "多种控件": (context) => const WidgetDemo(),
   //"InheritedWidget": (context) => const InheritedWidgetDemo(),
   "选择器": (context) => const CupertinoPickerDemo(),
-  "各种按钮": (context) => const ButtonPage(),
+  "多种按钮": (context) => const ButtonPage(),
   //"3d": (context) => const SimpleWidgets(),
   "与Android原生交互": (context) => const PlatformChannel(),
   "地图裁剪-可拖拉和缩放": (context) => const PaintDemo(),
@@ -51,7 +70,8 @@ Map<String, WidgetBuilder> routers = {
   "生命周期": (context) => const LifecycleWatcher(),
   "将任务转移到后台线程": (context) => const SampleApp3(),
   "异步 UI": (context) => const SampleApp2(),
-  "使用 Canvas 进行绘制": (context) => const DemoApp(),
+  "使用 Canvas 进行绘制点": (context) => const CanvasDemo(),
+  "使用 Canvas 进行绘制线": (context) => const DrawingBoard(),
   "home": (context) => const HomeRoute(),
   "login": (context) => const LoginRoute(),
   "themes": (context) => const ThemeChangeRoute(),
